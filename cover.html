@@ -30,27 +30,75 @@
         }
 
         body {
-            font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
-            min-height: 100vh;
-            margin: 0;
-            padding: 40px 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
+    font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 40px 20px;
+    min-height: 100vh;
 
-        .form-container {
-            background: white;
-            padding: 40px;
-            border-radius: 16px;
-            box-shadow: var(--shadow);
-            max-width: 750px;
-            width: 100%;
-            margin-bottom: 25px;
-            position: relative;
-            border-top: 6px solid var(--bau-green);
-        }
+    background:
+        radial-gradient(circle at 15% 25%, rgba(0,255,255,.15), transparent 35%),
+        radial-gradient(circle at 85% 70%, rgba(138,43,226,.18), transparent 40%),
+        linear-gradient(135deg,
+            #050816 0%,
+            #081322 35%,
+            #0b1225 65%,
+            #0a0718 100%);
+    background-attachment: fixed;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    overflow-x: hidden;
+}
+
+       body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+
+    background-image:
+        radial-gradient(rgba(255,255,255,.12) 1px, transparent 1px);
+
+    background-size:32px 32px;
+    opacity:.35;
+}
+
+body::after{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+
+    background:
+        radial-gradient(circle at 20% 30%, rgba(0,255,255,.12), transparent 25%),
+        radial-gradient(circle at 80% 75%, rgba(140,80,255,.12), transparent 30%);
+    filter: blur(50px);
+}
+    
+    
+    
+        .form-container{
+    width:100%;
+    max-width:750px;
+
+    background:rgba(18,24,40,.65);
+    backdrop-filter:blur(18px);
+    -webkit-backdrop-filter:blur(18px);
+
+    border:1px solid rgba(255,255,255,.12);
+    border-radius:20px;
+
+    padding:40px;
+    margin-bottom:25px;
+
+    box-shadow:
+        0 8px 32px rgba(0,0,0,.45),
+        0 0 30px rgba(0,255,255,.08);
+
+    color:#fff;
+}
 
         .web-header-logo {
             width: 90px;
@@ -379,6 +427,45 @@
             #preview-scale-box { transform: scale(0.35); margin-bottom: -190mm; }
             #preview-wrapper { padding: 10px; }
         }
+    input,
+select{
+    border:1px solid rgba(255,255,255,.15);
+}
+
+input::placeholder{
+    color:#b8c4d9;
+}
+    
+    
+/* Normal */
+input,
+select,
+textarea{
+    background: rgba(255,255,255,.08);
+    color: #fff;
+}
+
+/* While typing/focused */
+input:focus,
+select:focus,
+textarea:focus{
+    background: rgba(255,255,255,.08) !important;
+    color: #fff !important;
+    border-color: #29d8ff;
+    box-shadow: 0 0 0 3px rgba(41,216,255,.2);
+    outline: none;
+}
+
+/* Android Chrome autofill fix */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+textarea:-webkit-autofill,
+select:-webkit-autofill{
+    -webkit-text-fill-color: #fff !important;
+    -webkit-box-shadow: 0 0 0px 1000px rgba(255,255,255,.08) inset !important;
+    transition: background-color 9999s ease-in-out 0s;
+}
     </style>
 </head>
 
@@ -545,8 +632,8 @@
                         <span id="outTGrade"></span><br>
                     </div>
                     <span class="wrap-line">Department of <span id="outTDept"></span></span>
-                    <span class="single-line">Bangladesh Agricultural University</span><br>
-                    <span>Mymensingh- 2202</span>
+                    <span class="single-line">Bangladesh Agricultural<br> University</span><br>
+                    <span><small>Mymensingh- 2202</small></span>
                 </div>
             </div>
 
@@ -557,7 +644,7 @@
             <div class="spacer"></div>
             <div class="bottom-branding">
                 <div class="wrap-line">Department of <span id="outFooterDept"></span></div>
-                <div class="single-line">Bangladesh Agricultural University, Mymensingh- 2202</div>
+                <div class="single-line">Bangladesh Agricultural University <br> <small> Mymensingh- 2202</small></div>
             </div>
         </div>
     </div>
